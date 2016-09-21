@@ -1,18 +1,27 @@
+<ui-viewer></ui-viewer>
+
+
+
+
 <div class="well">
-  <form class="form-horizontal">
+  <form class="form-horizontal" name="newPlaylist">
     <fieldset>
 		<legend>New Playlist</legend>
-		<div class="form-group">
-		  <label class="col-xs-2 control-label">Name</label>
-		  <div class="col-xs-10">
-		    <input class="form-control" ng-model="name" placeholder="Playlist Name"/>
-		  </div>
-		</div>
-		<div class="form-group">
-		  <div class="col-xs-10 col-xs-offset-2">
-		    <button class="btn btn-success" type="submit">Create Playlist</button>
-		  </div>
-		</div>
+			<div class="form-group">
+			  <label class="col-xs-2 control-label">Name</label>
+			  <div class="col-xs-10">
+			    <input class="form-control" ng-model="name" type="text" ng-maxlength="16" required/>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <div class="col-xs-10 col-xs-offset-2">
+			    <button class="btn btn-success" type="submit" ng-disabled="newPlaylist.$invalid" ng-click="create()">Create Playlist</button>
+			  	<div class="alert alert-warning" ng-show="newPlaylist.$pristine">Please enter a name</div>
+			  	<div class="alert alert-warning" ng-hide="true" ng-show="newPlaylist.$invalid-maxlength && name">Please limit your name to 16 characters or less</div>
+
+			  </div>
+			</div>
     </fieldset>
   </form>
 </div>
+
